@@ -54,11 +54,9 @@ bool compare_fi_by_path_or_name(file_info const* const& a, file_info const* cons
 }
 
 
-wstring get_modules_list_col_name(modules_list_t const& modlist, std::uint16_t const& idx, string_converter& str_cnvrtr)
+wstring get_fi_name(file_info const* const& fi, string_converter& str_cnvrtr)
 {
-	assert(idx < modlist.m_count);
-	file_info const* const fi = modlist.m_list[idx];
-	assert(!fi->m_orig_instance);
+	assert(fi);
 	if(fi->m_file_path)
 	{
 		wchar_t const* const name = find_file_name(begin(fi->m_file_path), size(fi->m_file_path));
@@ -77,11 +75,9 @@ wstring get_modules_list_col_name(modules_list_t const& modlist, std::uint16_t c
 	}
 }
 
-wstring get_modules_list_col_path(modules_list_t const& modlist, std::uint16_t const& idx)
+wstring get_fi_path(file_info const* const& fi)
 {
-	assert(idx < modlist.m_count);
-	file_info const* const fi = modlist.m_list[idx];
-	assert(!fi->m_orig_instance);
+	assert(fi);
 	if(fi->m_file_path)
 	{
 		wstring const& ret = *fi->m_file_path.m_string;
